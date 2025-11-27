@@ -1,0 +1,221 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Open+Sans:wght@300;400&display=swap');
+
+:root {
+    --primary-dark: #121212; /* Sfondo scuro principale */
+    --secondary-dark: #1e1e1e; /* Sfondo scuro secondario */
+    --accent-color: #03dac6; /* Accento vivido (verde ciano) */
+    --warning-color: #cf6679; /* Colore di allarme (rosso/rosa) */
+    --text-light: #ffffff;
+    --text-grey: #b3b3b3;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    line-height: 1.7;
+    background: var(--primary-dark);
+    color: var(--text-light);
+    overflow-x: hidden;
+}
+
+h1, h2, h3 {
+    font-family: 'Montserrat', sans-serif;
+    color: var(--accent-color);
+    margin-bottom: 0.8rem;
+    line-height: 1.2;
+}
+
+h1 { font-size: 4.5rem; font-weight: 900; }
+h2 { font-size: 3rem; font-weight: 700; }
+h3 { font-size: 1.6rem; font-weight: 700; }
+
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 4rem 1.5rem;
+    text-align: center;
+}
+
+.subtitle {
+    font-size: 1.25rem;
+    color: var(--text-grey);
+    margin-bottom: 3rem;
+}
+
+.white-text { color: var(--text-light); }
+.dark-bg { background-color: var(--primary-dark); }
+.light-bg { background-color: var(--secondary-dark); }
+
+/* --- Hero Section (L'effetto WOW) --- */
+.hero-section {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    /* IMMAGINE: Terra o foto astratta di crisi */
+    background: url('https://images.unsplash.com/photo-1517409240212-70b740510522?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NTIyMjh8MHwxfHNlYXJjaHwzfHxzbW9rZSUyMGRhcmt8ZW58MHx8fHwxNzA1NTgzNDQ5fDA&ixlib=rb-4.0.3&q=80&w=1400') no-repeat center center/cover;
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7); /* Overlay più scuro */
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+}
+
+.hero-content p {
+    font-size: 1.8rem;
+    color: var(--warning-color); /* Testo di allarme in evidenza */
+    margin-bottom: 3rem;
+}
+
+.cta-button {
+    display: inline-block;
+    background: var(--accent-color);
+    color: var(--primary-dark);
+    padding: 1rem 3rem;
+    text-decoration: none;
+    border-radius: 50px; /* Bottone arrotondato */
+    font-weight: bold;
+    letter-spacing: 1px;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.cta-button:hover {
+    background: var(--text-light);
+    transform: scale(1.05); /* Piccolo effetto all'hover */
+}
+
+/* --- Griglie Contenuto --- */
+.cause-grid, .solution-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-top: 2rem;
+}
+
+.cause-item, .solution-item {
+    padding: 2rem;
+    border: 1px solid var(--text-grey);
+    border-radius: 10px;
+    background: var(--primary-dark);
+    text-align: left;
+    transition: border-color 0.3s ease, background 0.3s ease;
+}
+
+.cause-item:hover, .solution-item:hover {
+    border-color: var(--accent-color);
+    background: var(--secondary-dark);
+}
+
+.solution-item h3 { color: var(--text-light); }
+.solution-item p { color: var(--text-grey); }
+
+/* --- Sezione Siccità (Flexbox per Immagine/Testo) --- */
+#impatto-siccita .flex-content {
+    display: flex;
+    gap: 50px;
+    text-align: left;
+    align-items: center;
+    margin-top: 3rem;
+}
+
+#impatto-siccita h2 { text-align: center; margin-bottom: 2rem;}
+
+#impatto-siccita .text-box {
+    flex: 1;
+    max-width: 60%;
+}
+
+#impatto-siccita .image-box {
+    flex: 1;
+    min-height: 400px;
+    /* IMMAGINE SICCITÀ: Terra spaccata o letto di un fiume asciutto */
+    background: url('https://images.unsplash.com/photo-1543207000-98569c73796c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NTIyMjh8MHwxfHNlYXJjaHwzfHxkcml0ZSUyMGxhbmR8ZW58MHx8fHwxNzA1NTgzNjk2fDA&ixlib=rb-4.0.3&q=80&w=600') no-repeat center center/cover;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+/* --- Sezioni Parallasse (L'elemento Professionale) --- */
+.parallax-section {
+    height: 70vh; /* Più alte per più impatto */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--text-light);
+    background-attachment: fixed; /* Parallasse Key */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    padding: 0;
+}
+
+.parallax-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.55); /* Overlay */
+}
+
+.parallax-section h2 { color: var(--text-light); font-size: 4rem; text-shadow: 0 0 10px rgba(0,0,0,0.8); }
+.parallax-section p { font-size: 1.4rem; font-weight: 300; }
+
+/* IMMAGINI DI FONDO PARALLASSE */
+/* 3. Ghiaccio */
+.image-impact-1 {
+    background-image: url('https://images.unsplash.com/photo-1536746808003-8d9e79493547?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NTIyMjh8MHwxfHNlYXJjaHw0fHxnbGFjaWVyJTIwbWVsdGluZyUyMGRhcmt8ZW58MHx8fHwxNzA1NTg0MDQzfDA&ixlib=rb-4.0.3&q=80&w=1400');
+}
+/* 5. Innalzamento del Mare */
+.image-impact-2 {
+    background-image: url('https://images.unsplash.com/photo-1473489812403-f368d4d12c82?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NTIyMjh8MHwxfHNlYXJjaHwzfHxjb2FzdGFsJTIwaW51bmRhdGlvbiUyMGRhcmt8ZW58MHx8fHwxNzA1NTg0MTU2fDA&ixlib=rb-4.0.3&q=80&w=1400');
+}
+
+/* --- Footer --- */
+.footer-section {
+    background: var(--primary-dark);
+    color: var(--text-grey);
+    text-align: center;
+    padding: 2rem 0;
+    border-top: 1px solid var(--secondary-dark);
+}
+
+/* --- Responsive (Mobile) --- */
+@media (max-width: 900px) {
+    .hero-content h1 {
+        font-size: 3rem;
+    }
+    .hero-content p {
+        font-size: 1.4rem;
+    }
+    .parallax-section {
+        height: 50vh;
+        background-attachment: scroll; /* Disattiva Parallasse su Mobile per performance */
+    }
+    #impatto-siccita .flex-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    #impatto-siccita .text-box {
+        max-width: 100%;
+    }
+}
