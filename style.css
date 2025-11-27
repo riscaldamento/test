@@ -1,12 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&family=Roboto:wght@300;400;700&display=swap');
 
 :root {
-    --primary-dark: #121212; /* Sfondo scuro principale */
-    --secondary-dark: #1e1e1e; /* Sfondo scuro secondario */
-    --accent-color: #00bcd4; /* Azzurro Cielo - Più pulito e moderno */
-    --warning-color: #ff9800; /* Arancione - Per enfasi sui dati */
+    --primary-dark: #1e2124; /* Sfondo base - Più morbido del nero puro */
+    --secondary-dark: #2a2d32; /* Sfondo secondario */
+    --accent-color: #00e676; /* Verde Acqua Elettrico - Energia/Speranza */
+    --warning-color: #ff3d00; /* Rosso Profondo - Allarme/Crisi */
     --text-light: #ffffff;
-    --text-grey: #e0e0e0; /* Grigio chiaro per il corpo del testo */
+    --text-grey: #b0b0b0; 
 }
 
 * {
@@ -17,10 +17,11 @@
 
 body {
     font-family: 'Roboto', sans-serif;
-    line-height: 1.8; /* Aumentato per maggiore leggibilità */
+    line-height: 1.8;
     background: var(--primary-dark);
     color: var(--text-grey);
     overflow-x: hidden;
+    scroll-behavior: smooth;
 }
 
 h1, h2, h3 {
@@ -30,153 +31,154 @@ h1, h2, h3 {
     line-height: 1.2;
 }
 
-h1 { font-size: 4.8rem; font-weight: 800; }
-h2 { font-size: 3.2rem; font-weight: 600; color: var(--accent-color); }
-h3 { font-size: 1.7rem; font-weight: 600; }
+h1 { font-size: 5rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; }
+h2 { font-size: 3rem; font-weight: 600; color: var(--accent-color); }
+h3 { font-size: 1.8rem; font-weight: 600; }
 
 .container {
     max-width: 1200px;
     margin: auto;
-    padding: 5rem 1.5rem; /* Aumentato il padding per "aria" */
+    padding: 6rem 1.5rem; /* Tantissimo spazio per l'eleganza */
     text-align: center;
 }
 
 .subtitle {
-    font-size: 1.4rem;
+    font-size: 1.3rem;
     color: var(--text-grey);
-    margin-bottom: 4rem;
+    margin-bottom: 5rem;
     font-weight: 300;
 }
 
-.white-text { color: var(--text-light); }
 .dark-bg { background-color: var(--primary-dark); }
-.light-bg { background-color: var(--secondary-dark); }
+.data-section { background-color: var(--secondary-dark); }
+
 
 /* --- Hero Section --- */
 .hero-section {
-    /* ... (Stili base uguali) ... */
     height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
-    /* !!!!!!!! INSERISCI QUI LA TUA IMMAGINE LOCALE (es. img/terra_oscura.jpg) !!!!!!!! */
-    background: url('https://riscaldamento.github.io/test/img/earth_hero.jpg') no-repeat center center/cover;
+    /* !!! SOSTITUISCI QUI IL PERCORSO LOCALE DELL'IMMAGINE EROE !!! */
+    background: url('./assets/hero.jpg') no-repeat center center/cover;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
 }
 
 .hero-section::before {
-    background: rgba(0, 0, 0, 0.75); /* Overlay */
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7); /* Overlay scuro */
+    backdrop-filter: blur(2px); /* Effetto Nebbia Sottile */
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
 }
 
 .hero-content p {
-    font-size: 2rem;
+    font-size: 2.2rem;
     color: var(--warning-color); 
-    margin-bottom: 4rem;
+    margin-bottom: 5rem;
+    font-weight: 300;
 }
 
 .cta-button {
+    display: inline-block;
     background: var(--accent-color);
     color: var(--primary-dark);
-    padding: 1.2rem 3.5rem;
+    padding: 1.5rem 4rem;
     border-radius: 50px;
-    transition: background 0.3s ease, transform 0.3s ease;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    box-shadow: 8px 8px 15px #15171a, -8px -8px 15px #272b2e; /* Neumorphism: Ombra esterna */
+    transition: all 0.4s ease-in-out;
 }
 
 .cta-button:hover {
     background: var(--text-light);
-    transform: translateY(-3px); /* Effetto 3D più bello */
+    transform: scale(1.05);
+    box-shadow: inset 5px 5px 10px #15171a, inset -5px -5px 10px #272b2e; /* Effetto Pressione */
 }
 
-/* --- Sezione Trend (Nuova e Curata) --- */
-.trend-section {
-    background-color: var(--secondary-dark);
-}
-
-.data-grid {
+/* --- Elementi Decorati (Data, Cause, Soluzioni) --- */
+.data-grid, .cause-grid, .social-grid, .solution-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 40px;
-    margin-top: 2rem;
-}
-
-.data-item {
-    padding: 2.5rem;
-    background: var(--primary-dark);
-    border-radius: 10px;
-    border: 1px solid var(--secondary-dark);
-}
-
-.data-value {
-    display: block;
-    font-size: 4rem;
-    font-family: 'Poppins', sans-serif;
-    font-weight: 800;
-    color: var(--warning-color);
-    margin-bottom: 0.5rem;
-}
-
-.data-label {
-    font-size: 1.1rem;
-    color: var(--text-grey);
-}
-
-/* --- Griglie Contenuto (Cause & Soluzioni) --- */
-.cause-grid, .solution-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
     margin-top: 3rem;
 }
 
-.cause-item, .solution-item {
-    padding: 2.5rem;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 10px;
+.data-item, .cause-item, .social-item, .solution-item {
+    padding: 3rem;
+    border-radius: 15px;
     background: var(--primary-dark);
+    box-shadow: 8px 8px 16px #15171a, -8px -8px 16px #272b2e; /* Neumorphism */
     text-align: left;
-    transition: all 0.4s ease-in-out;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.05); /* Bordo sottile */
 }
 
-.cause-item:hover, .solution-item:hover {
+.data-item:hover, .cause-item:hover, .social-item:hover, .solution-item:hover {
+    transform: translateY(-5px);
     border-color: var(--accent-color);
-    background: #252525;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
 }
 
-.cause-item h3, .solution-item h3 { color: var(--accent-color); }
+.data-value {
+    font-size: 5rem;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 800;
+    color: var(--warning-color);
+    display: block;
+    margin-bottom: 0.5rem;
+    text-align: center;
+}
 
-/* --- Sezione Siccità (Flexbox per Immagine/Testo) --- */
-#impatto-siccita .flex-content {
+/* --- Impatto Estremi (Layout 2 colonne) --- */
+.extreme-weather-section {
+    background-color: var(--primary-dark);
+}
+.flex-content {
     display: flex;
-    gap: 50px;
-    text-align: left;
+    gap: 60px;
     align-items: center;
+    text-align: left;
     margin-top: 4rem;
 }
-
-#impatto-siccita h2 { text-align: center; margin-bottom: 2rem;}
-
-#impatto-siccita .text-box {
+.text-box {
     flex: 1;
-    max-width: 60%;
+    max-width: 50%;
+}
+.image-box {
+    flex: 1;
+    min-height: 500px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+    /* Animazione all'hover */
+    transition: transform 0.5s ease-in-out;
+}
+.image-box:hover {
+    transform: scale(1.02);
 }
 
-#impatto-siccita .image-box {
-    flex: 1;
-    min-height: 450px;
-    /* !!!!!!!! INSERISCI QUI LA TUA IMMAGINE LOCALE (es. img/siccita.jpg) !!!!!!!! */
-    background: url('https://riscaldamento.github.io/test/img/siccita.jpg') no-repeat center center/cover;
-    border-radius: 10px;
-    box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
+/* !!! SOSTITUISCI QUI IL PERCORSO LOCALE PER LA SICCITA' !!! */
+.drought-image {
+    background: url('./assets/drought.jpg') no-repeat center center/cover;
 }
 
-/* --- Sezioni Parallasse --- */
+/* --- Sezioni Parallasse (Con effetto Glassa) --- */
 .parallax-section {
-    height: 70vh;
+    height: 80vh; /* Ancora più grandi */
     display: flex;
     align-items: center;
     justify-content: center;
-    text-align: center;
     color: var(--text-light);
     background-attachment: fixed;
     background-position: center;
@@ -187,49 +189,48 @@ h3 { font-size: 1.7rem; font-weight: 600; }
 }
 
 .parallax-section::before {
-    background: rgba(0, 0, 0, 0.65); /* Overlay più scuro per testo più leggibile */
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6); 
+    backdrop-filter: blur(1px); /* Effetto Glassa sul Parallasse */
 }
 
-.parallax-section h2 { font-size: 4.5rem; color: var(--text-light); text-shadow: 0 0 15px rgba(0,0,0,0.9); }
+.parallax-section h2 { font-size: 4.5rem; text-shadow: 0 0 10px rgba(0,0,0,1); }
 .parallax-section p { font-size: 1.5rem; font-weight: 300; }
 
-/* IMMAGINI DI FONDO PARALLASSE */
-/* !!!!!!!! INSERISCI QUI LE TUE IMMAGINI LOCALI !!!!!!!! */
-/* 4. Ghiaccio */
-.image-impact-1 {
-    background-image: url('https://riscaldamento.github.io/test/img/glacier.jpg');
-}
-/* 6. Innalzamento del Mare */
-.image-impact-2 {
-    background-image: url('https://riscaldamento.github.io/test/img/sea_level.jpg');
-}
+/* !!! SOSTITUISCI QUI I PERCORSI LOCALI PER IL GHIACCIO E L'INNALZAMENTO DEL MARE !!! */
+.image-impact-1 { background-image: url('./assets/glacier.jpg'); }
+/* (Se avessi una terza sezione parallasse) .image-impact-2 { background-image: url('./assets/flood.jpg'); } */
+
 
 /* --- Footer --- */
 .footer-section {
     background: var(--primary-dark);
     color: var(--text-grey);
     text-align: center;
-    padding: 2rem 0;
-    border-top: 1px solid var(--secondary-dark);
+    padding: 2.5rem 0;
+    border-top: 2px solid var(--secondary-dark);
+    font-size: 0.9rem;
 }
 
 /* --- Responsive (Mobile) --- */
 @media (max-width: 900px) {
     h1 { font-size: 3rem; }
-    h2 { font-size: 2.5rem; }
-
-    .hero-content p {
-        font-size: 1.4rem;
-    }
+    h2 { font-size: 2.2rem; }
+    .hero-content p { font-size: 1.4rem; }
     .parallax-section {
-        height: 50vh;
-        background-attachment: scroll;
+        height: 60vh;
+        background-attachment: scroll; /* Disattiva Parallasse per mobile */
     }
-    #impatto-siccita .flex-content {
+    .flex-content {
         flex-direction: column;
-        text-align: center;
     }
-    #impatto-siccita .text-box {
+    .text-box, .image-box {
         max-width: 100%;
     }
+    .image-box { min-height: 300px; }
 }
